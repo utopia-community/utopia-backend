@@ -1,4 +1,4 @@
-package com.project.UtopiaBackend;
+package com.project.utopia;
 
 import java.io.*;
 import javax.servlet.http.*;
