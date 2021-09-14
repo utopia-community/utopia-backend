@@ -6,7 +6,9 @@ import com.project.utopia.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDao {
     //这个session factory 是跟数据库交流的
     @Autowired
