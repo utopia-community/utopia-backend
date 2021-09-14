@@ -1,6 +1,6 @@
 package com.project.utopia.dao;
 
-import com.project.utopia.entity.Authorities;
+import com.project.utopia.entity.Authority;
 import com.project.utopia.entity.AuthorityType;
 import com.project.utopia.entity.User;
 import org.hibernate.Session;
@@ -15,7 +15,7 @@ public class UserDao {
     private SessionFactory sessionFactory;
 
     public void signUp(User user, AuthorityType authority) {
-        Authorities authorities = new Authorities();
+        Authority authorities = new Authority();
         authorities.setAuthorities(authority);
         authorities.setEmail(user.getEmail());
 
