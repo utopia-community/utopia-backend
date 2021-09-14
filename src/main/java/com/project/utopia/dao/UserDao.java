@@ -1,19 +1,21 @@
 package com.project.utopia.dao;
 
-import com.project.utopia.entity.Authorities;
+import com.project.utopia.entity.Authority;
 import com.project.utopia.entity.AuthorityType;
 import com.project.utopia.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDao {
     //这个session factory 是跟数据库交流的
     @Autowired
     private SessionFactory sessionFactory;
 
     public void signUp(User user, AuthorityType authority) {
-        Authorities authorities = new Authorities();
+        Authority authorities = new Authority();
         authorities.setAuthorities(authority);
         authorities.setEmail(user.getEmail());
 

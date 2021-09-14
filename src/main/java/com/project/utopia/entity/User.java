@@ -10,6 +10,9 @@ public class User implements Serializable {
     private static final long serialVersionUID = 2652327633296064143L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     private String email;
 
     private String firstName;
@@ -21,6 +24,13 @@ public class User implements Serializable {
     //security相关
     private boolean enabled;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
