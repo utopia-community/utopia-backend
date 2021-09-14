@@ -1,7 +1,6 @@
 package com.project.utopia.service;
 
 import com.project.utopia.dao.UserDao;
-import com.project.utopia.entity.AuthorityType;
 import com.project.utopia.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +9,7 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public void signUp(User user, AuthorityType authority) {
+    public void signUp(User user, String authority) {
 
         user.setEnabled(true);
         userDao.signUp(user, authority);

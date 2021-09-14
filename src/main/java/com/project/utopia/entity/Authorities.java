@@ -1,6 +1,8 @@
 package com.project.utopia.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 
@@ -13,9 +15,7 @@ public class Authorities implements Serializable {
     @Id
     private String email;
 
-    //convert enum from numbers to String type
-    @Enumerated(EnumType.STRING)
-    private AuthorityType authority;
+    private String authorities;
 
     public String getEmail() {
         return email;
@@ -25,11 +25,11 @@ public class Authorities implements Serializable {
         this.email = email;
     }
 
-    public AuthorityType getAuthorities() {
-        return authority;
+    public String getAuthorities() {
+        return authorities;
     }
 
-    public void setAuthorities(AuthorityType authority) {
-        this.authority = authority;
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
     }
 }
