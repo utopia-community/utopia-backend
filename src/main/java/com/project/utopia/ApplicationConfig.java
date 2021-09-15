@@ -9,13 +9,12 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@EnableWebMvc
 public class ApplicationConfig {
     @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.project.utopiaCommunity.entity");
+        sessionFactory.setPackagesToScan("com.project.utopia.entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -24,7 +23,7 @@ public class ApplicationConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://laiproject-instance.cmukzxtzloql.us-west-1.rds.amazonaws.com:3306/utopiaCommunity?createDatabaseIfNotExist=true&serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://laiproject-instance.cmukzxtzloql.us-west-1.rds.amazonaws.com:3306/utopia?createDatabaseIfNotExist=true&serverTimezone=UTC");
         dataSource.setUsername("swee");
         dataSource.setPassword("canvassyearlypasskeygoulash");
 
