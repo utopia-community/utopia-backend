@@ -1,25 +1,23 @@
 package com.project.utopia.controller;
-
-import com.project.utopia.entity.AuthorityType;
-import com.project.utopia.entity.User;
-import com.project.utopia.service.UserService;
+import com.project.utopia.holder.request.RegisterRequestBody;
+import com.project.utopia.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class RegistrationController {
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
 
-    //相当于 signupServlet doPost， value = /register
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    //@ResponseStatus： 添加返回状态 200， 404 。。。
-    @ResponseStatus(value = HttpStatus.CREATED)
-    //@RequestBody： Convert the request body( from json)  to a java object == jackson
-    @ResponseBody
-    public void signUp(User customer, AuthorityType auth) {
-        userService.signUp(customer, auth);
+    public ResponseEntity<Object> registerCustomer(@RequestBody RegisterRequestBody request) {
+        // request containing the request body.
+        int status = customerService.addCustomer(request);
+        if (status == -1) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 }

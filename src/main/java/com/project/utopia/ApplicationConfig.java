@@ -38,6 +38,4 @@ public class ApplicationConfig {
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         return hibernateProperties;
     }
-
-
 }

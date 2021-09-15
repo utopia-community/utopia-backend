@@ -1,14 +1,10 @@
 package com.project.utopia.entity;
+import java.io.Serializable;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "requests")
-public class Request {
-    @Id
-    private Long id;
+public class Request implements Serializable {
+    private static final long serialVersionUID = 105L;
 
 
 }
