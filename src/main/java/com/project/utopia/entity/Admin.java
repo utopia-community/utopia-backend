@@ -9,6 +9,5 @@ public class Admin {
     private
     @OneToMany
     List<Announcement> announcements;
-
-
+    
 }
