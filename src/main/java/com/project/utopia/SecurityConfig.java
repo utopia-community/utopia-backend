@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 import javax.sql.DataSource;
 
-public class securityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // this class is for Spring to filter info based on logged in user's authority
     //right now copied from DoorDash
     @Autowired
