@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Admin {
     @Id
-    private 
+    private
     @OneToMany
     List<Announcement> announcements;
 
