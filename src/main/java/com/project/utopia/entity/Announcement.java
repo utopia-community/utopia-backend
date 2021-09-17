@@ -17,10 +17,10 @@ public class Announcement implements Serializable {
 
     private String title;
     private String content;
+
     private int dateCreated;
 
-    @ManyToOne
-    private Admin admin;
+
 
 
 }

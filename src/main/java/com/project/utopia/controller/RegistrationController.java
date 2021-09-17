@@ -1,4 +1,5 @@
 package com.project.utopia.controller;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.utopia.holder.request.RegisterRequestBody;
 import com.project.utopia.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ public class RegistrationController {
     @Autowired
     private CustomerService customerService;
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<Object> registerCustomer(@RequestBody RegisterRequestBody request) {
         // request containing the request body.
