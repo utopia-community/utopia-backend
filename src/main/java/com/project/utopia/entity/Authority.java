@@ -8,28 +8,28 @@ import java.io.Serializable;
 @Table(name = "authorities")
 public class Authority implements Serializable {
 
-    private static final long serialVersionUID = 8734140534986494039L;
+    private static final long serialVersionUID = 101L;
 
     @Id
     private String email;
 
     //convert enum from numbers to String type
-    @Enumerated(EnumType.STRING)
-    private AuthorityType authority;
+   // @Enumerated(EnumType.STRING)
+    private String authorities;
 
-    public String getEmail() {
+    public String getEmailId() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmailId(String email) {
         this.email = email;
     }
 
-    public AuthorityType getAuthorities() {
-        return authority;
+    public String getAuthorities() {
+        return authorities;
     }
 
-    public void setAuthorities(AuthorityType authority) {
-        this.authority = authority;
+    public void setAuthorities(String authority) {
+        this.authorities = authority;
     }
 }

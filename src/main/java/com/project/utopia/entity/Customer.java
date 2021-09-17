@@ -20,8 +20,8 @@ public class Customer implements Serializable {
     private String lastName;
     private String address;
 
-    //@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //private List<Request> requests;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Request> requests;
 
     public int getId() {
         return id;
@@ -63,11 +63,11 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
-   // public List<Request> getRequests() {
-    //    return requests;
-   // }
+    public List<Request> getRequests() {
+        return requests;
+    }
 
-   // public void setRequests(List<Request> requests) {
-    //    this.requests = requests;
-    //}
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
 }

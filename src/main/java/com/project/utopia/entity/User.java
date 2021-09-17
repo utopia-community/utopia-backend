@@ -1,61 +1,30 @@
 package com.project.utopia.entity;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 2652327633296064143L;
+    private static final long serialVersionUID = 102L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    private String email;
-
-    private String firstName;
-
-    private String lastName;
+    private String emailId;
 
     private String password;
 
-    //security相关
     private boolean enabled;
 
-    public int getId() {
-        return id;
+    @OneToOne(mappedBy = "user")
+    private Customer customer;
+
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public String getPassword() {
@@ -74,4 +43,11 @@ public class User implements Serializable {
         this.enabled = enabled;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
