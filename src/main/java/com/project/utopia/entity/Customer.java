@@ -19,9 +19,11 @@ public class Customer implements Serializable {
     private String firstName;
     private String lastName;
     private String address;
+    private double balance;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Request> requests;
+
 
     public int getId() {
         return id;
@@ -69,5 +71,12 @@ public class Customer implements Serializable {
 
     public void setRequests(List<Request> requests) {
         this.requests = requests;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

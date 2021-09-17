@@ -23,7 +23,8 @@ public class AccountInfoController {
         response.setEmail(customer.getUser().getEmailId());
         response.setFirstName(customer.getFirstName());
         response.setLastName(customer.getLastName());
-        response.setBillingAddress(customer.getAddress());
+        response.setAddress(customer.getAddress());
+        response.setBalance(customer.getBalance());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

@@ -4,8 +4,8 @@ public class AccountInfoResponseBody {
     private String lastName;
     private String firstName;
     private String email;
-    private String shippingAddress;
-    private String billingAddress;
+    private String address;
+    private double balance;
 
     public String getLastName() {
         return lastName;
@@ -31,19 +31,18 @@ public class AccountInfoResponseBody {
         this.email = email;
     }
 
-    public String getShippingAddress() {
-        return shippingAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setAddress(String shippingAddress) {
+        this.address = address;
+    }
+    public double getBalance() {
+        return balance;
     }
 
-    public String getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }
