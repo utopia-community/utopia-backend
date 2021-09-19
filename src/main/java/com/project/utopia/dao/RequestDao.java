@@ -2,7 +2,6 @@ package com.project.utopia.dao;
 
 import com.project.utopia.entity.Customer;
 import com.project.utopia.holder.request.SetRequestStatusRequestBody;
-import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 import com.project.utopia.entity.Request;
 import org.hibernate.Session;
