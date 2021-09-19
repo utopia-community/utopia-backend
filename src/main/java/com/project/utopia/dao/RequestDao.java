@@ -1,16 +1,17 @@
 package com.project.utopia.dao;
 
 import com.project.utopia.entity.Customer;
+import com.project.utopia.holder.request.SetRequestStatusRequestBody;
+import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 import com.project.utopia.entity.Request;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Repository
@@ -84,12 +85,36 @@ public class RequestDao {
         return requestList;
     }
 
-//    /**
-//     * Modified request status submitted by Admin
-//     *
-//     * @return
-//     */
-//    public void solveRequests() {
-//    }
+    /**
+     * Apply requests status update submitted by Admin in bulk
+     * @return int : number of request status update operations made
+     */
+    public int setRequestsStatus(List<SetRequestStatusRequestBody> setStatusList) {
+        Session session = null;
+        int count = 0;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            for ( SetRequestStatusRequestBody item: setStatusList ){
+                System.out.println("Target requestId: " + item.getRequestId() + ", change status to: " + item.getStatus());
+
+                String qryString = "UPDATE Request request set request.status=:status where request.id=:id";
+                Query query = session.createQuery(qryString)
+                        .setParameter("status", item.getStatus())
+                        .setParameter("id", item.getRequestId());
+                count += query.executeUpdate();
+            }
+            session.getTransaction().commit();
+            System.out.println("Total updated:"  + count);
+        }catch (Exception ex) {
+            ex.printStackTrace();
+            if (session != null) session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return count;
+    }
 
 }

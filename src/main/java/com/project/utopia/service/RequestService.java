@@ -5,6 +5,7 @@ import com.project.utopia.dao.RequestDao;
 import com.project.utopia.entity.Customer;
 import com.project.utopia.entity.Request;
 import com.project.utopia.holder.request.NewRequestRequestBody;
+import com.project.utopia.holder.request.SetRequestStatusRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +45,9 @@ public class RequestService {
 
     public List<Request> getAllRequests() {
         return requestDao.getAllRequests();
+    }
+
+    public int setRequestsStatus(List<SetRequestStatusRequestBody> setStatusList) {
+        return requestDao.setRequestsStatus(setStatusList);
     }
 }
