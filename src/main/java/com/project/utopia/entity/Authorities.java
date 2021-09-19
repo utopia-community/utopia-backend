@@ -11,18 +11,18 @@ public class Authorities implements Serializable {
     private static final long serialVersionUID = 101L;
 
     @Id
-    private String email;
+    private String emailId;
 
     //convert enum from numbers to String type
    // @Enumerated(EnumType.STRING)
     private String authorities;
 
     public String getEmailId() {
-        return email;
+        return emailId;
     }
 
     public void setEmailId(String email) {
-        this.email = email;
+        this.emailId = email;
     }
 
     public String getAuthorities() {

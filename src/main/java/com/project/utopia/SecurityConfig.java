@@ -7,12 +7,20 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Arrays;
 
@@ -43,7 +51,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // antMatchers是帮我们设置不同页面的权限的。
         http
                 .authorizeRequests() // 指明权限，*是任意字符；**是可以匹配/a/b这种多个level的。
-                .antMatchers("/announcement/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .antMatchers("/announcements/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .antMatchers("/requests/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .antMatchers("/new-announcement/**").hasAnyAuthority( "ROLE_ADMIN")
+                .antMatchers("/profile/**").hasAnyAuthority("ROLE_USER")
                 .anyRequest().permitAll();
         // 而且权限不够的时候，会自动redirect to login
 
