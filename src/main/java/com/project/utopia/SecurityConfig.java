@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/setRequestStatus/**").hasAnyAuthority( "ROLE_ADMIN")
                 .antMatchers("/allRequests/**").hasAnyAuthority( "ROLE_ADMIN")
                 .antMatchers("/new-announcement/**").hasAnyAuthority( "ROLE_ADMIN")
-                .antMatchers("/profile/**").hasAnyAuthority("ROLE_USER")
+                .antMatchers("/profile/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                 .anyRequest().permitAll();
         // 而且权限不够的时候，会自动redirect to login
 
