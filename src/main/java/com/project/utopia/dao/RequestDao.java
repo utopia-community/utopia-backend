@@ -69,7 +69,7 @@ public class RequestDao {
             //Requests of same status are sorted by lastModifiedTime
             TypedQuery<Request> openQuery =  session.createQuery("SELECT request FROM Request request WHERE request.status = 'OPEN' ORDER BY request.lastModifiedTime", Request.class);
             requestList.addAll(openQuery.getResultList());
-            TypedQuery<Request> inProgressQuery =  session.createQuery("SELECT request FROM Request request WHERE request.status = 'IN_PROGRESS' ORDER BY request.lastModifiedTime", Request.class);
+            TypedQuery<Request> inProgressQuery =  session.createQuery("SELECT request FROM Request request WHERE request.status = 'IN PROGRESS' ORDER BY request.lastModifiedTime", Request.class);
             requestList.addAll(inProgressQuery.getResultList());
             TypedQuery<Request> resolvedQuery =  session.createQuery("SELECT request FROM Request request WHERE request.status = 'RESOLVED' ORDER BY request.lastModifiedTime", Request.class);
             requestList.addAll(resolvedQuery.getResultList());
