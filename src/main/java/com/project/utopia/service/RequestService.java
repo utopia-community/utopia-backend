@@ -1,12 +1,14 @@
 package com.project.utopia.service;
 
+import com.mysql.cj.Session;
 import com.project.utopia.dao.RequestDao;
+import com.project.utopia.entity.Customer;
 import com.project.utopia.entity.Request;
-import com.project.utopia.holder.request.RequestRequestBody;
+import com.project.utopia.holder.request.NewRequestRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RequestService {
@@ -14,22 +16,33 @@ public class RequestService {
     @Autowired
     private RequestDao requestDao;
 
-    public Request getRequest(int requestId) {
-        return requestDao.getRequest(requestId);
-    }
+    @Autowired
+    private CustomerService customerService;
 
-    public void submitRequest(RequestRequestBody requestBody) {
 
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        String emailId = loggedInUser.getName();
+    public void submitRequest(NewRequestRequestBody requestBody) {
+
+        Customer customer = customerService.getCurrentCustomer();
 
         Request requestObject = new Request();
+        requestObject.setCustomer(customer);
+        requestObject.setEmailId(customer.getUser().getEmailId());
 
-        requestObject.setEmailId(emailId);
         requestObject.setTitle(requestBody.getTitle());
         requestObject.setContent(requestBody.getContent());
+        requestObject.setCategory(requestBody.getCategory());
         requestObject.setStatus("Open");
-        requestObject.setCreationTime(System.currentTimeMillis());
+        long now = System.currentTimeMillis();
+        requestObject.setCreationTime(now);
+        requestObject.setLastModifiedTime(now);
         requestDao.save(requestObject);
     }
+
+    public List<Request> getCurrentRequests(){
+        return requestDao.getCurrentUserRequests();
+    }
+
+//    public List<Request> getAllRequests() {
+//        return requestDao.getAllRequests();
+//    }
 }

@@ -3,12 +3,9 @@ package com.project.utopia.dao;
 import com.project.utopia.entity.Customer;
 import org.springframework.stereotype.Repository;
 import com.project.utopia.entity.Request;
-import com.project.utopia.entity.User;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +41,11 @@ public class RequestDao {
     }
 
     /**
-     * Get most recent requests list for given emailId, limit to 20 requests
-     * @param emailId
-     * @return
+     * Get list of requests created by current customer
+     * @return List of Request objects
      */
-    public List<Request> getAllRequests(String emailId) {
+    public List<Request> getCurrentUserRequests() {
+        System.out.println("Now into requestDao - getCurrentUserRequests");
         Customer customer = customerDao.getCurrentCustomer();
         if (customer != null) {
             return customer.getRequests();
@@ -56,12 +53,20 @@ public class RequestDao {
         return new ArrayList<>();
     }
 
-    public Request getRequest(int requestId) {
-        try (Session session = sessionFactory.openSession()) {
-            return session.get(Request.class, requestId);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return null;
-    }
+//    /**
+//     * Get all requests list for with status "Open"
+//     * @return List of Request objects
+//     */
+//    public List<Request> getAllRequests() {
+//        return new ArrayList<>();
+//    }
+//
+//    /**
+//     * Get all requests list for with status "Open"
+//     *
+//     * @return
+//     */
+//    public void solveRequests() {
+//    }
+
 }

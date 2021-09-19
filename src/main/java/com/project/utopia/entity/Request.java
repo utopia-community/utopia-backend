@@ -14,17 +14,30 @@ public class Request implements Serializable {
     private int requestId;
 
     @ManyToOne
+    @JsonIgnore
     private Customer customer;
 
     private String emailId;
 
     private long creationTime;
 
+    private long lastModifiedTime;
+
+    private String category;
+
     private String title;
 
     private String content;
 
     private String status;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public int getRequestId() {
         return requestId;
@@ -40,6 +53,14 @@ public class Request implements Serializable {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getContent() {
@@ -72,5 +93,13 @@ public class Request implements Serializable {
 
     public void setCreationTime(long creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public long getLastModifiedTime() {
+        return lastModifiedTime;
+    }
+
+    public void setLastModifiedTime(long lastModifiedTime) {
+        this.lastModifiedTime = lastModifiedTime;
     }
 }
