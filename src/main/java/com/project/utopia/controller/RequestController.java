@@ -30,11 +30,11 @@ public class RequestController {
         return new ResponseEntity<>(requestList, HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/allRequests", method = RequestMethod.GET)
-//    public ResponseEntity<Object> getAllRequests() {
-//        List<Request> requestList = requestService.getAllRequests();
-//        return new ResponseEntity<>(requestList, HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/allRequests", method = RequestMethod.GET)
+    public ResponseEntity<Object> getOpenRequests() {
+        List<Request> requestList = requestService.getAllRequests();
+        return new ResponseEntity<>(requestList, HttpStatus.OK);
+    }
 //
 //    @RequestMapping(value = "/solveRequest", method = RequestMethod.POST)
 //    @ResponseStatus(value = HttpStatus.CREATED)

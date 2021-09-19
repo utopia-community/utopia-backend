@@ -42,7 +42,7 @@ public class RequestService {
         return requestDao.getCurrentUserRequests();
     }
 
-//    public List<Request> getAllRequests() {
-//        return requestDao.getAllRequests();
-//    }
+    public List<Request> getAllRequests() {
+        return requestDao.getAllRequests();
+    }
 }
