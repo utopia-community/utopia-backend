@@ -11,12 +11,14 @@ public class Announcement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int announcementId;
 
+
     private String title;
 
-    private String Content; // string type?
+    private String content; // string type?
 
     private String category;
 
+    @Column(name = "creation_time")
     private long creationTime;
 
     public int getAnnouncementId() {
@@ -36,11 +38,11 @@ public class Announcement implements Serializable {
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        content = content;
     }
 
     public String getCategory() {
