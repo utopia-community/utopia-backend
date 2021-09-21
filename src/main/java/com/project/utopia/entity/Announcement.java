@@ -8,14 +8,16 @@ import java.io.Serializable;
 public class Announcement implements Serializable {
     @Id
     @Column(name = "announcement_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int announcementId;
 
     private String title;
 
     private String Content; // string type?
 
-    @ManyToOne
-    private User user;
+    private String category;
+
+    private long creationTime;
 
     public int getAnnouncementId() {
         return announcementId;
@@ -41,11 +43,20 @@ public class Announcement implements Serializable {
         Content = content;
     }
 
-    public User getUser() {
-        return user;
+    public String getCategory() {
+        return category;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCategory(String category) {
+        this.category = category;
     }
+
+    public long getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(long creationTime) {
+        this.creationTime = creationTime;
+    }
+
 }

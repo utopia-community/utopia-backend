@@ -6,6 +6,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class AnnouncementDao {
     @Autowired
@@ -27,6 +29,18 @@ public class AnnouncementDao {
                 session.close();
             }
         }
+    }
+
+    public void saveAnnouncement(Announcement announcement) {
+
+    }
+
+    public Announcement getAnnouncementById(int announcementId) {
+        return null;
+    }
+
+    public List<Announcement> getAllAnnouncements() {
+        return null;
     }
 
 }
