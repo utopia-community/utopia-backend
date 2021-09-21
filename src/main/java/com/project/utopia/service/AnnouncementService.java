@@ -4,6 +4,7 @@ import com.project.utopia.dao.AnnouncementDao;
 import com.project.utopia.entity.Announcement;
 import com.project.utopia.holder.request.AnnouncementRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
