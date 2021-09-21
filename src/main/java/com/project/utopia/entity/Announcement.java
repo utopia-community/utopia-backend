@@ -11,7 +11,6 @@ public class Announcement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int announcementId;
 
-
     private String title;
 
     private String content; // string type?
