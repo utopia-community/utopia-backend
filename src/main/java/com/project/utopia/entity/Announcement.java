@@ -13,7 +13,7 @@ public class Announcement implements Serializable {
 
     private String title;
 
-    private String Content; // string type?
+    private String content;
 
     private String category;
 
@@ -21,10 +21,6 @@ public class Announcement implements Serializable {
 
     public int getAnnouncementId() {
         return announcementId;
-    }
-
-    public void setAnnouncementId(int announcementId) {
-        this.announcementId = announcementId;
     }
 
     public String getTitle() {
@@ -36,11 +32,11 @@ public class Announcement implements Serializable {
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        content = content;
     }
 
     public String getCategory() {

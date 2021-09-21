@@ -5,7 +5,7 @@ import com.project.utopia.entity.Announcement;
 import com.project.utopia.holder.request.AnnouncementRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class AnnouncementService {
@@ -16,8 +16,8 @@ public class AnnouncementService {
         Announcement announcementObject = new Announcement();
 
         announcementObject.setTitle(requestBody.getTitle());
-        announcementObject.setContent(requestBody.getContent());
         announcementObject.setCategory(requestBody.getCategory());
+        announcementObject.setContent(requestBody.getContent());
         long now = System.currentTimeMillis();
         announcementObject.setCreationTime(now);
         announcementDao.saveAnnouncement(announcementObject);
@@ -28,6 +28,16 @@ public class AnnouncementService {
     }
 
     public List<Announcement> getAllAnnouncements() {
-        return announcementDao.getAllAnnouncements();
+        List<Announcement> announcements = announcementDao.getAllAnnouncements();
+        announcements.sort((o1, o2) -> Long.compare(o2.getCreationTime(), o1.getCreationTime()));
+        // return the top 6 latest announcements
+        if (announcements.size() > 6) {
+            List<Announcement> result = new ArrayList<>();
+            for (int i = 0; i < 6; i++) {
+                result.add(announcements.get(i));
+            }
+            return result;
+        }
+        return announcements;
     }
 }
