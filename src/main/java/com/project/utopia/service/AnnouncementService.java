@@ -29,14 +29,9 @@ public class AnnouncementService {
 
     public List<Announcement> getAllAnnouncements() {
         List<Announcement> announcements = announcementDao.getAllAnnouncements();
-        announcements.sort((o1, o2) -> Long.compare(o2.getCreationTime(), o1.getCreationTime()));
         // return the top 6 latest announcements
         if (announcements.size() > 6) {
-            List<Announcement> result = new ArrayList<>();
-            for (int i = 0; i < 6; i++) {
-                result.add(announcements.get(i));
-            }
-            return result;
+            return announcements.subList(0, 6);
         }
         return announcements;
     }

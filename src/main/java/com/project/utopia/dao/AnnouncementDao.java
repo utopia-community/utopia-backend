@@ -5,7 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -32,11 +33,24 @@ public class AnnouncementDao {
     }
 
     public Announcement getAnnouncementById(int announcementId) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(Announcement.class, announcementId);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return null;
     }
 
     public List<Announcement> getAllAnnouncements() {
-        return null;
+        List<Announcement> announcementList = new ArrayList<>();
+        try (Session session = sessionFactory.openSession()) {
+            TypedQuery<Announcement> openQuery = session.createQuery("SELECT announcements FROM Announcement announcements ORDER BY announcements.creationTime desc", Announcement.class);
+            announcementList.addAll(openQuery.getResultList());
+            return announcementList;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return announcementList;
     }
 
 }
