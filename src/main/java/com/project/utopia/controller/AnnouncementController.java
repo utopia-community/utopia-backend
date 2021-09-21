@@ -1,12 +1,12 @@
 package com.project.utopia.controller;
 
+
 import com.project.utopia.entity.Announcement;
 import com.project.utopia.holder.request.AnnouncementRequestBody;
 import com.project.utopia.service.AnnouncementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
