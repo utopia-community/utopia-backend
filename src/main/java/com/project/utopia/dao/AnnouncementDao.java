@@ -13,7 +13,7 @@ public class AnnouncementDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public void save(Announcement announcement) {
+    public void saveAnnouncement(Announcement announcement) {
         Session session = null;
         try {
             session = sessionFactory.openSession();
@@ -29,10 +29,6 @@ public class AnnouncementDao {
                 session.close();
             }
         }
-    }
-
-    public void saveAnnouncement(Announcement announcement) {
-
     }
 
     public Announcement getAnnouncementById(int announcementId) {
