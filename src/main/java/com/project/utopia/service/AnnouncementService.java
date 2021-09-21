@@ -24,10 +24,10 @@ public class AnnouncementService {
     }
 
     public Announcement getAnnouncementById(int announcementId) {
-        return null;
+        return announcementDao.getAnnouncementById(announcementId);
     }
 
     public List<Announcement> getAllAnnouncements() {
-        return null;
+        return announcementDao.getAllAnnouncements();
     }
 }
