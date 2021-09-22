@@ -13,7 +13,7 @@ import java.util.List;
 public class AnnouncementController {
 
     @Autowired
-    AnnouncementService announcementService;
+    private AnnouncementService announcementService;
 
     @RequestMapping(value = "/newAnnouncement", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)

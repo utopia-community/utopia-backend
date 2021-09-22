@@ -15,6 +15,8 @@ public class Announcement implements Serializable {
 
     private String content;
 
+    // test
+
     private String category;
 
     private long creationTime;
