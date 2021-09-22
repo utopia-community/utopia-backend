@@ -14,17 +14,17 @@ public class Announcement implements Serializable {
 
     private String title;
 
-    private String content; // string type?
+    private String content;
 
     private String category;
 
     @Column(name = "creation_time")
     private String creationTime;
 
-
     public int getAnnouncementId() {
         return announcementId;
     }
+
     public void setAnnouncementId(int announcementId) {
         this.announcementId = announcementId;
     }
@@ -32,23 +32,23 @@ public class Announcement implements Serializable {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
-    // ”i love google“
-    // <h1>I love google</h1> /n
-    // <h2 color = red> this is content </h2>
+
     public String getContent() {
         return content;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
 
-
     public String getCategory() {
         return category;
     }
+
     public void setCategory(String category) {
         this.category = category;
     }
@@ -56,6 +56,7 @@ public class Announcement implements Serializable {
     public String getCreationTime() {
         return creationTime;
     }
+
     public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }

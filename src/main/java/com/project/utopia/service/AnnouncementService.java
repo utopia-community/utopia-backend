@@ -7,6 +7,7 @@ import com.project.utopia.holder.request.AnnouncementRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -20,11 +21,12 @@ public class AnnouncementService {
         announcementObject.setTitle(requestBody.getTitle());
         announcementObject.setCategory(requestBody.getCategory());
         announcementObject.setContent(requestBody.getContent());
-        //Date  date = new current Date
-        long time = System.currentTimeMillis();
-        announcementObject.setCreationTime("11");
-        //change time into a string : 03/10/2021 19:38
+        announcementObject.setCreationTime(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date()));
         announcementDao.saveAnnouncement(announcementObject);
+    }
+
+    public String getContent(int announcementId) {
+        return getAnnouncementById(announcementId).getContent();
     }
 
     public Announcement getAnnouncementById(int announcementId) {
