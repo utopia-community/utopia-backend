@@ -36,6 +36,6 @@ public class AnnouncementController {
     @RequestMapping(value = "/announcements/content/{announcement-id}", method = RequestMethod.GET)
     @ResponseBody
     public String getContent(@PathVariable("announcement-id") int announcementId) {
-        return announcementService.getAnnouncementById(announcementId).getContent();
+        return announcementService.getContent(announcementId);
     }
 }
