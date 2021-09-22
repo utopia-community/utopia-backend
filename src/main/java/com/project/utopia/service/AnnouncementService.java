@@ -1,26 +1,29 @@
 package com.project.utopia.service;
 
+
 import com.project.utopia.dao.AnnouncementDao;
 import com.project.utopia.entity.Announcement;
 import com.project.utopia.holder.request.AnnouncementRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
 
 @Service
 public class AnnouncementService {
+
     @Autowired
     private AnnouncementDao announcementDao;
 
     public void saveAnnouncement(AnnouncementRequestBody requestBody){
         Announcement announcementObject = new Announcement();
-
         announcementObject.setTitle(requestBody.getTitle());
         announcementObject.setCategory(requestBody.getCategory());
         announcementObject.setContent(requestBody.getContent());
-        long now = System.currentTimeMillis();
-        announcementObject.setCreationTime(now);
+        //Date  date = new current Date
+        long time = System.currentTimeMillis();
+        announcementObject.setCreationTime("11");
+        //change time into a string : 03/10/2021 19:38
         announcementDao.saveAnnouncement(announcementObject);
     }
 

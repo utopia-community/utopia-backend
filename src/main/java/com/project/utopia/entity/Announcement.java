@@ -1,13 +1,14 @@
 package com.project.utopia.entity;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "announcements")
 public class Announcement implements Serializable {
+
+    private static final long serialVersionUID = 108L;
+
     @Id
-    @Column(name = "announcement_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int announcementId;
 
@@ -15,17 +16,15 @@ public class Announcement implements Serializable {
 
     private String content; // string type?
 
-    // test
-
     private String category;
 
     @Column(name = "creation_time")
-    private long creationTime;
+    private String creationTime;
+
 
     public int getAnnouncementId() {
         return announcementId;
     }
-
     public void setAnnouncementId(int announcementId) {
         this.announcementId = announcementId;
     }
@@ -33,32 +32,31 @@ public class Announcement implements Serializable {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
+    // ”i love google“
+    // <h1>I love google</h1> /n
+    // <h2 color = red> this is content </h2>
     public String getContent() {
         return content;
     }
-
     public void setContent(String content) {
-        content = content;
+        this.content = content;
     }
+
 
     public String getCategory() {
         return category;
     }
-
     public void setCategory(String category) {
         this.category = category;
     }
 
-    public long getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
-
-    public void setCreationTime(long creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 

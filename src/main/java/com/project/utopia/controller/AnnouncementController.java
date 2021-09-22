@@ -15,7 +15,7 @@ public class AnnouncementController {
     @Autowired
     private AnnouncementService announcementService;
 
-    @RequestMapping(value = "/newAnnouncement", method = RequestMethod.POST)
+    @RequestMapping(value = "/announcements/new-announcement", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public void postAnnouncement(@RequestBody AnnouncementRequestBody announcementRequestBody) {
         announcementService.saveAnnouncement(announcementRequestBody);
@@ -33,4 +33,9 @@ public class AnnouncementController {
        return announcementService.getAnnouncementById(announcementId);
     }
 
+    @RequestMapping(value = "/announcements/content/{announcement-id}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getContent(@PathVariable("announcement-id") int announcementId) {
+        return announcementService.getAnnouncementById(announcementId).getContent();
+    }
 }
