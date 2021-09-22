@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class AnnouncementDao {
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public void saveAnnouncement(Announcement announcement) {
         Session session = null;
@@ -44,7 +44,7 @@ public class AnnouncementDao {
     public List<Announcement> getAllAnnouncements() {
         List<Announcement> announcementList = new ArrayList<>();
         try (Session session = sessionFactory.openSession()) {
-            TypedQuery<Announcement> openQuery = session.createQuery("SELECT announcements FROM Announcement announcements ORDER BY announcements.creationTime desc", Announcement.class);
+            TypedQuery<Announcement> openQuery = session.createQuery("SELECT announcements FROM Announcement announcements ORDER BY announcements.announcementId desc", Announcement.class);
             announcementList.addAll(openQuery.getResultList());
             return announcementList;
         } catch (Exception ex) {
