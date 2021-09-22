@@ -15,6 +15,8 @@ public class Announcement implements Serializable {
 
     private String content; // string type?
 
+    // test
+
     private String category;
 
     @Column(name = "creation_time")
