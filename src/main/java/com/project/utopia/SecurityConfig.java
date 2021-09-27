@@ -32,8 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .successHandler((httpServletRequest, httpServletResponse, authentication) -> {
                     System.out.println(authentication.getName() + "logged in.");
+//                    System.out.println(authentication.getAuthorities());
 //              httpServletResponse.setHeader("username", authentication.getName()); // return the email ID
+                    httpServletResponse.setHeader("authorities", authentication.getAuthorities().toString()); // return the authorities
                     httpServletResponse.setStatus(HttpStatus.OK.value());
+//                    httpServletResponse.setContentType("application/json;charset=UTF-8");
+//                    httpServletResponse.getWriter().write(authentication.getAuthorities().toString());
                 })
                 .failureHandler((httpServletRequest, httpServletResponse, e) -> {
                     httpServletResponse.setStatus(HttpStatus.BAD_REQUEST.value()); // if fail to login, return the bad request status code
