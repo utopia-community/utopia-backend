@@ -5,6 +5,7 @@ import com.project.utopia.entity.Customer;
 import com.project.utopia.entity.Request;
 import com.project.utopia.holder.request.NewRequestRequestBody;
 import com.project.utopia.holder.request.SetRequestStatusRequestBody;
+import com.project.utopia.holder.request.deleteRequestRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ public class RequestService {
         requestObject.setTitle(requestBody.getTitle());
         requestObject.setContent(requestBody.getContent());
         requestObject.setCategory(requestBody.getCategory());
+        requestObject.setPhotoURL(requestBody.getPhotoURL());
         requestObject.setStatus("Open");
         long now = System.currentTimeMillis();
         requestObject.setCreationTime(now);
@@ -48,5 +50,9 @@ public class RequestService {
 
     public int setRequestsStatus(List<SetRequestStatusRequestBody> setStatusList) {
         return requestDao.setRequestsStatus(setStatusList);
+    }
+
+    public int deleteRequest(List<deleteRequestRequestBody> deleteRequestList) {
+        return requestDao.deleteRequest(deleteRequestList);
     }
 }

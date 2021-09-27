@@ -31,6 +31,8 @@ public class Request implements Serializable {
 
     private String status;
 
+    private String photoURL;
+
     public Customer getCustomer() {
         return customer;
     }
@@ -85,6 +87,14 @@ public class Request implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
     }
 
     public long getCreationTime() {

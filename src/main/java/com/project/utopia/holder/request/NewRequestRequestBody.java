@@ -5,6 +5,7 @@ public class NewRequestRequestBody {
     private String title;
     private String content;
     private String category;
+    private String photoURL;
 
     public String getCategory() {
         return category;
@@ -28,6 +29,14 @@ public class NewRequestRequestBody {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
     }
 
 }
