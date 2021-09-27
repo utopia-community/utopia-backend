@@ -46,7 +46,7 @@ public class RequestController {
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/deleteRequest", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteRequest", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.ACCEPTED)
     @ResponseBody
     public ResponseEntity<Object> deleteRequests(@RequestBody List<deleteRequestRequestBody> deleteRequestList) {
