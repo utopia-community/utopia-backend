@@ -134,8 +134,10 @@ public class RequestDao {
                 //actually removing requestItem from "request" table
                 customer.getRequests().remove(requestItem);
                 session.delete(requestItem);
+                deletedCount++;;
             }
             session.getTransaction().commit();
+            System.out.println("Total deleted:"  + deletedCount);
 
         } catch (Exception ex) {
             ex.printStackTrace();
