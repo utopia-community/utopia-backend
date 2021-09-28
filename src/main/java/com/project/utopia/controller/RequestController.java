@@ -3,6 +3,7 @@ package com.project.utopia.controller;
 import com.project.utopia.entity.Request;
 import com.project.utopia.holder.request.NewRequestRequestBody;
 import com.project.utopia.holder.request.SetRequestStatusRequestBody;
+import com.project.utopia.holder.request.deleteRequestRequestBody;
 import org.springframework.http.ResponseEntity;
 import com.project.utopia.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +45,13 @@ public class RequestController {
         int count = requestService.setRequestsStatus(setStatusList);
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/deleteRequest", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    @ResponseBody
+    public ResponseEntity<Object> deleteRequests(@RequestBody List<deleteRequestRequestBody> deleteRequestList) {
+        int count = requestService.deleteRequest(deleteRequestList);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
 }
