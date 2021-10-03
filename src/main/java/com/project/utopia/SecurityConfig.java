@@ -96,7 +96,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setMaxAge(Duration.ofHours(1));
-//        configuration.setAllowedHeaders(Arrays.asList("authorities"));
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
