@@ -17,9 +17,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class ApplicationConfig {
 
-
-
-
     @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean sessionFactory() throws IOException {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -28,7 +25,6 @@ public class ApplicationConfig {
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
-
 
     public ApplicationConfig() throws FileNotFoundException {
     }
@@ -42,6 +38,7 @@ public class ApplicationConfig {
 
         String username = props.getProperty("user");
         String password = props.getProperty("password");
+        System.out.println("username:" + username);
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
