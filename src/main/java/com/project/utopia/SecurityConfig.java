@@ -1,5 +1,6 @@
 package com.project.utopia;
 
+import com.project.utopia.entity.Authorities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .successHandler((httpServletRequest, httpServletResponse, authentication) -> {
                     System.out.println(authentication.getName() + "logged in.");
-
                     httpServletResponse.setContentType("application/json");
                     httpServletResponse.setCharacterEncoding("UTF-8");
                     httpServletResponse.setStatus(HttpStatus.OK.value());

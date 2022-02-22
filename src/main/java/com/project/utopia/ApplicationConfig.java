@@ -38,7 +38,6 @@ public class ApplicationConfig {
 
         String username = props.getProperty("user");
         String password = props.getProperty("password");
-        System.out.println("username:" + username);
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
